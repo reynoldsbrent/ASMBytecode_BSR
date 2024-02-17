@@ -1,3 +1,5 @@
+/** Divide two numbers (I, L, F, and D), store them, and then print each result */
+
 import static utils.Utilities.writeFile;
 
 import org.objectweb.asm.*;
@@ -28,44 +30,44 @@ public class gen3 {
             MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC, "main", "([Ljava/lang/String;)V", null, null);
             mv.visitCode();
 
-            // Divide two integers
-            mv.visitLdcInsn(20); // Load first integer
-            mv.visitLdcInsn(5); // Load second integer
-            mv.visitInsn(Opcodes.IDIV); // Divide
-            mv.visitVarInsn(Opcodes.ISTORE, 1); // Store result in local variable 1
-            // Print the result
+            // Divide two ints
+            mv.visitLdcInsn(25); // First int loaded
+            mv.visitLdcInsn(15); // Second int loaded
+            mv.visitInsn(Opcodes.IDIV); // Divide the two ints
+            mv.visitVarInsn(Opcodes.ISTORE, 1); // Store result 
+            // Print result
             mv.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(Opcodes.ILOAD, 1); // Load the stored result
+            mv.visitVarInsn(Opcodes.ILOAD, 1);
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(I)V", false);
 
             // Divide two longs
-            mv.visitLdcInsn(100L); // Load first long
-            mv.visitLdcInsn(10L); // Load second long
-            mv.visitInsn(Opcodes.LDIV); // Divide
-            mv.visitVarInsn(Opcodes.LSTORE, 3); // Store result in local variable 3
-            // Print the result
+            mv.visitLdcInsn(50L); // First long
+            mv.visitLdcInsn(20L); // Second long
+            mv.visitInsn(Opcodes.LDIV); // Divide the two longs
+            mv.visitVarInsn(Opcodes.LSTORE, 3); // Store result
+            // Print out result
             mv.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(Opcodes.LLOAD, 3); // Load the stored result
+            mv.visitVarInsn(Opcodes.LLOAD, 3); 
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(J)V", false);
 
             // Divide two floats
-            mv.visitLdcInsn(10.5f); // Load first float
-            mv.visitLdcInsn(3.0f); // Load second float
-            mv.visitInsn(Opcodes.FDIV); // Divide
-            mv.visitVarInsn(Opcodes.FSTORE, 5); // Store result in local variable 5
-            // Print the result
+            mv.visitLdcInsn(15.5f); // First float
+            mv.visitLdcInsn(5.5f); // Second float
+            mv.visitInsn(Opcodes.FDIV); // Divide the two floats
+            mv.visitVarInsn(Opcodes.FSTORE, 5); // Store result of division
+            // Print out result
             mv.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(Opcodes.FLOAD, 5); // Load the stored result
+            mv.visitVarInsn(Opcodes.FLOAD, 5); 
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(F)V", false);
 
             // Divide two doubles
-            mv.visitLdcInsn(15.0); // Load first double
-            mv.visitLdcInsn(3.0); // Load second double
-            mv.visitInsn(Opcodes.DDIV); // Divide
-            mv.visitVarInsn(Opcodes.DSTORE, 7); // Store result in local variable 7
-            // Print the result
+            mv.visitLdcInsn(15.5); // First double
+            mv.visitLdcInsn(10.0); // Second double
+            mv.visitInsn(Opcodes.DDIV); // Divide the two doubles
+            mv.visitVarInsn(Opcodes.DSTORE, 7); // Store result
+            // Print result
             mv.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(Opcodes.DLOAD, 7); // Load the stored result
+            mv.visitVarInsn(Opcodes.DLOAD, 7); 
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(D)V", false);
 
             mv.visitInsn(Opcodes.RETURN);

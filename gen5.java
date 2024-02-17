@@ -1,3 +1,5 @@
+/** Declare and print String Variables */
+
 import static utils.Utilities.writeFile;
 
 import org.objectweb.asm.*;
@@ -27,18 +29,18 @@ public class gen5 {
             MethodVisitor mv = cw.visitMethod(Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC, "main", "([Ljava/lang/String;)V", null, null);
             mv.visitCode();
 
-            // Declare and initialize string variables
-            mv.visitLdcInsn("Hello"); 
-            mv.visitVarInsn(Opcodes.ASTORE, 1); // Store string in local variable 1
-            mv.visitLdcInsn("World!"); 
-            mv.visitVarInsn(Opcodes.ASTORE, 2); // Store string in local variable 2
+            // Declare and initialize strings
+            mv.visitLdcInsn("Hello World!"); 
+            mv.visitVarInsn(Opcodes.ASTORE, 1); // Store first string
+            mv.visitLdcInsn("This is Brent!"); 
+            mv.visitVarInsn(Opcodes.ASTORE, 2); // Store second string
 
-            // Print the string variables
+            // Print the strings
             mv.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(Opcodes.ALOAD, 1); // Load string from local variable 1
+            mv.visitVarInsn(Opcodes.ALOAD, 1); // Load first string
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
             mv.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-            mv.visitVarInsn(Opcodes.ALOAD, 2); // Load string from local variable 2
+            mv.visitVarInsn(Opcodes.ALOAD, 2); // Load second string
             mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
 
            

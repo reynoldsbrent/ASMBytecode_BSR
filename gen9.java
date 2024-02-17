@@ -1,3 +1,6 @@
+/** Get input (I), from the user, run a loop that adds that number to an accumulator,
+and then print the result. */
+
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;
 
@@ -20,55 +23,55 @@ public class gen9 {
         MethodVisitor main = cw.visitMethod(Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC, "main", "([Ljava/lang/String;)V", null, null);
         main.visitCode();
 
-        // Initialize scanner and accumulator variables
+        // Scanner and Accumulator initialization
         main.visitTypeInsn(Opcodes.NEW, "java/util/Scanner");
         main.visitInsn(Opcodes.DUP);
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "in", "Ljava/io/InputStream;");
         main.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/util/Scanner", "<init>", "(Ljava/io/InputStream;)V", false);
-        main.visitVarInsn(Opcodes.ASTORE, 1); // Store Scanner object in local variable 1
+        main.visitVarInsn(Opcodes.ASTORE, 1); // Store Scanner
 
-        main.visitInsn(Opcodes.ICONST_0); // Initialize accumulator to 0
-        main.visitVarInsn(Opcodes.ISTORE, 2); // Store accumulator in local variable 2
+        main.visitInsn(Opcodes.ICONST_0); // Accumulator initialized to 0
+        main.visitVarInsn(Opcodes.ISTORE, 2); // Store accumulator
 
-        // Read input from user
-        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner object
+        // Get user input
+        main.visitVarInsn(Opcodes.ALOAD, 1); // Scanner loaded
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/util/Scanner", "nextInt", "()I", false); // Call nextDouble method to get input
-        main.visitVarInsn(Opcodes.ISTORE, 3); // Store input in local variable 3
+        main.visitVarInsn(Opcodes.ISTORE, 3); // Store input
 
 
-        // Declare and initialize loop counter
+        // Loop counter
         main.visitInsn(Opcodes.ICONST_0);
         main.visitVarInsn(Opcodes.ISTORE, 4);
 
-        // Start of the while loop
+        // While loop start
         Label start = new Label();
         main.visitLabel(start);
 
-        // Load loop counter for condition check
+        // Load loop counter
         main.visitVarInsn(Opcodes.ILOAD, 4);
 
         // Load loop limit
         main.visitIntInsn(Opcodes.SIPUSH, 10);
         Label end = new Label();
-        // Compare loop counter with loop limit
-        main.visitJumpInsn(Opcodes.IF_ICMPGE, end); // Jump to end label if counter >= 10
+        // Compare loop counter and loop limit
+        main.visitJumpInsn(Opcodes.IF_ICMPGE, end); // Jump to the end label if loop counter is greater than or equal to 10
 
 
 
-        // Add input to accumulator
+        // Input added to accumulator
         main.visitVarInsn(Opcodes.ILOAD, 2); // Load accumulator
-        main.visitVarInsn(Opcodes.ILOAD, 3); // Load input number
+        main.visitVarInsn(Opcodes.ILOAD, 3); // Load the number that the user input earlier
         main.visitInsn(Opcodes.IADD); // Add input to accumulator
-        main.visitVarInsn(Opcodes.ISTORE, 2); // Store updated accumulator
+        main.visitVarInsn(Opcodes.ISTORE, 2); // Store accumulator
 
 
         // Increment loop counter
         main.visitIincInsn(4, 1);
 
-        // Jump back to the start of the loop
+        // Jump to loop start
         main.visitJumpInsn(Opcodes.GOTO, start);
 
-        // End of the while loop
+        // Loop end
         main.visitLabel(end);
 
         // Print sum value
@@ -76,10 +79,8 @@ public class gen9 {
         main.visitVarInsn(Opcodes.ILOAD, 2);
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(I)V", false);
 
-        
         main.visitInsn(Opcodes.RETURN);
 
-        // Define max stack and locals
         main.visitMaxs(0, 0);
         main.visitEnd();
 

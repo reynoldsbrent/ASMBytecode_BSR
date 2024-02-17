@@ -1,3 +1,5 @@
+/** Implement If. . . Then . . . Else */
+
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;
 
@@ -20,31 +22,28 @@ public class gen8 {
         MethodVisitor main = cw.visitMethod(Opcodes.ACC_PUBLIC + Opcodes.ACC_STATIC, "main", "([Ljava/lang/String;)V", null, null);
         main.visitCode();
 
-        // Load the condition value (true or false)
-        main.visitInsn(Opcodes.ICONST_1); // Load true
+        // If
+        main.visitInsn(Opcodes.ICONST_1); // Load true. The value of the condition check
         Label elseLabel = new Label();
         Label endLabel = new Label();
-        main.visitJumpInsn(Opcodes.IFEQ, elseLabel); // Jump to else label if condition is false
+        main.visitJumpInsn(Opcodes.IFEQ, elseLabel); // If condition is false, jump to else label
 
-        // "Then"
+        // Then. Print "True condition"
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-        main.visitLdcInsn("Condition is true");
+        main.visitLdcInsn("True condition");
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
         main.visitJumpInsn(Opcodes.GOTO, endLabel); // Jump to end label
 
-        // "Else" 
+        // Else. Print "False condition"
         main.visitLabel(elseLabel);
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
-        main.visitLdcInsn("Condition is false");
+        main.visitLdcInsn("False condition");
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V", false);
 
-        // End label
         main.visitLabel(endLabel);
 
-        
         main.visitInsn(Opcodes.RETURN);
 
-        
         main.visitMaxs(0, 0);
         main.visitEnd();
 

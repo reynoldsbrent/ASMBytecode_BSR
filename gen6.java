@@ -1,3 +1,5 @@
+/**Get input from the user using the Scanner class (I, L, and D)*/
+
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;
 
@@ -25,33 +27,33 @@ public class gen6 {
         main.visitInsn(Opcodes.DUP);
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "in", "Ljava/io/InputStream;");
         main.visitMethodInsn(Opcodes.INVOKESPECIAL, "java/util/Scanner", "<init>", "(Ljava/io/InputStream;)V", false);
-        main.visitVarInsn(Opcodes.ASTORE, 1); // Store Scanner object in local variable 1
+        main.visitVarInsn(Opcodes.ASTORE, 1); // Store Scanner object 
 
-        // Read integer input
-        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner object
+        // Read in user int input
+        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
         main.visitLdcInsn("Enter an integer: ");
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "print", "(Ljava/lang/String;)V", false);
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/util/Scanner", "nextInt", "()I", false);
         main.visitVarInsn(Opcodes.ISTORE, 3);
 
-        // Read long input
-        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner object
+        // Read in user long input
+        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner 
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
         main.visitLdcInsn("Enter a long: ");
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "print", "(Ljava/lang/String;)V", false);
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/util/Scanner", "nextLong", "()J", false);
         main.visitVarInsn(Opcodes.LSTORE, 2);
 
-        // Read double input
-        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner object
+        // Read in user double input
+        main.visitVarInsn(Opcodes.ALOAD, 1); // Load Scanner
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
         main.visitLdcInsn("Enter a double: ");
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "print", "(Ljava/lang/String;)V", false);
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/util/Scanner", "nextDouble", "()D", false);
         main.visitVarInsn(Opcodes.DSTORE, 4);
 
-        // Print input values
+        // Print out user input
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
         main.visitVarInsn(Opcodes.ILOAD, 3);
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(I)V", false);

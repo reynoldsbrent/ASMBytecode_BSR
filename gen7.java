@@ -1,3 +1,5 @@
+/** Implement a While Loop */
+
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;
 
@@ -24,31 +26,31 @@ public class gen7 {
         main.visitInsn(Opcodes.ICONST_0);
         main.visitVarInsn(Opcodes.ISTORE, 1);
 
-        // Start of the while loop
+        // While loop start
         Label start = new Label();
         main.visitLabel(start);
 
-        // Load loop counter for condition check
+        // This loads the loop counter 
         main.visitVarInsn(Opcodes.ILOAD, 1);
 
-        // Load loop limit
+        // This loads the loop limit
         main.visitIntInsn(Opcodes.SIPUSH, 10);
         Label end = new Label();
-        // Compare loop counter with loop limit
-        main.visitJumpInsn(Opcodes.IF_ICMPGE, end); // Jump to end label if counter >= 10
+        // Loop counter is compared to loop limit
+        main.visitJumpInsn(Opcodes.IF_ICMPGE, end); // Jump to the end label if the loop counter is greater than or equal to 10
 
-        // Print loop counter
+        // Print out loop counter
         main.visitFieldInsn(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;");
         main.visitVarInsn(Opcodes.ILOAD, 1);
         main.visitMethodInsn(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(I)V", false);
 
-        // Increment loop counter
+        // Increment the loop counter
         main.visitIincInsn(1, 1);
 
-        // Jump back to the start of the loop
+        // Jump back to loop start
         main.visitJumpInsn(Opcodes.GOTO, start);
 
-        // End of the while loop
+        // End of loop
         main.visitLabel(end);
 
         
