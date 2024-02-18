@@ -1,4 +1,6 @@
-/** Implement If. . . Then . . . Else */
+/** Implement If. . . Then . . . Else 
+ * Author: Brent Reynolds
+*/
 
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;

@@ -1,5 +1,6 @@
 /** Get input (I), from the user, run a loop that adds that number to an accumulator,
-and then print the result. */
+and then print the result. 
+Author: Brent Reynolds*/
 
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;

@@ -1,4 +1,6 @@
-/** Implement a While Loop */
+/** Implement a While Loop 
+ * Author: Brent Reynolds
+*/
 
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;

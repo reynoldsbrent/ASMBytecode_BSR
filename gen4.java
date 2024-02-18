@@ -1,4 +1,6 @@
-/**Compare two numbers (I, S, L) to determine which is bigger and print it*/
+/**Compare two numbers (I, S, L) to determine which is bigger and print it
+ * Author: Brent Reynolds
+*/
 
 import static utils.Utilities.writeFile;
 

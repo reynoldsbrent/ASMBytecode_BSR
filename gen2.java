@@ -1,4 +1,6 @@
-/** Subtract two numbers (I, L, F, and D), store them, and then print each result */
+/** Subtract two numbers (I, L, F, and D), store them, and then print each result
+ * Author: Brent Reynolds
+ */
 
 import static utils.Utilities.writeFile;
 

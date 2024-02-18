@@ -1,4 +1,6 @@
-/** Declare and print String Variables */
+/** Declare and print String Variables
+ * Author: Brent Reynolds
+ */
 
 import static utils.Utilities.writeFile;
 

@@ -1,4 +1,6 @@
-/**Get input from the user using the Scanner class (I, L, and D)*/
+/**Get input from the user using the Scanner class (I, L, and D)
+ * Author: Brent Reynolds
+*/
 
 import static utils.Utilities.writeFile;
 import org.objectweb.asm.*;

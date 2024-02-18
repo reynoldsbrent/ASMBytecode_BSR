@@ -1,4 +1,6 @@
-/** Multiply two numbers (I, L, F, and D), store them, and then print each result */
+/** Multiply two numbers (I, L, F, and D), store them, and then print each result
+ * Author: Brent Reynolds
+ */
 
 import static utils.Utilities.writeFile;
 
